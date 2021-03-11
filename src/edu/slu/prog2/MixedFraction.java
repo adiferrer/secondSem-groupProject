@@ -98,7 +98,7 @@ public class MixedFraction extends Fraction {
     }
 
     /**
-     * Adds two Mixed Fractions and overwrites the add method of Fraction. <br>
+     * Adds two Mixed Fractions and overrides the add method of Fraction. <br>
      * by Kurt Matthew C. Nudo <br><br>
      * <p>
      * METHOD ALGORITHM: <br>
@@ -135,7 +135,7 @@ public class MixedFraction extends Fraction {
     }
 
     /**
-     * Adds two Mixed Fractions and overwrites the add method of Fraction. <br>
+     * Adds two Mixed Fractions and overloads the add method of Fraction. <br>
      * by Kurt Matthew C. Nudo <br><br>
      *
      * METHOD ALGORITHM: <br>
@@ -177,7 +177,7 @@ public class MixedFraction extends Fraction {
         return sum;
     }
 
-    // overwrite subtract method
+    // override subtract method
 
     /**
      * Overloads subtract method. <br>
@@ -206,7 +206,7 @@ public class MixedFraction extends Fraction {
         return diff;
     }
 
-    // overwrite multiplyBy method by Jerome
+    // override multiplyBy method by Jerome
 
     // overload multiplyBy method by Jerome
     /*public MixedFraction multiplyBy(MixedFraction param) {
@@ -218,7 +218,7 @@ public class MixedFraction extends Fraction {
 
     }*/
 
-    // overwrite divideBy method by Andre
+    // override divideBy method by Andre
     //public MixedFraction divideBy(Fraction param) {
     // temporary notes for me, please ignore thanks
     // override
