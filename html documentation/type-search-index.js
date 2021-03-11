@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"edu.slu.prog2","l":"Fraction"},{"p":"edu.slu.prog2","l":"FractionArithmetic"},{"p":"edu.slu.prog2","l":"MixedFraction"},{"p":"edu.slu.prog2","l":"NoDenominatorException"},{"p":"edu.slu.prog2","l":"NoNumeratorException"}];updateSearchResults();
