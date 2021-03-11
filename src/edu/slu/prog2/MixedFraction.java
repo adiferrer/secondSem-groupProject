@@ -57,13 +57,40 @@ public class MixedFraction extends Fraction {
         super(fraction.setNumerator());
     }*/
 
-    // Accessor Methods
-    public void setWholeNumber(int wholeNumber) {
+    /**
+     * Mutuator/Setter Method <br>
+     * by Eugene Justin Pangwi
+     *
+     * @param wholeNumber
+     */
+    public void setWholePart(int wholeNumber) {
         this.wholeNumber = wholeNumber;
     }
 
-    public int getWholeNumber() {
+    // setFractionPart by Eugene Justin Pangwi
+
+    /**
+     * Accessor/Getter Method <br>
+     * by Eugene Justin Pangwi
+     *
+     * @return wholeNumber of a MixedFraction
+     */
+    public int getWholePart() {
         return wholeNumber;
+    }
+
+    // getFractionPart by Eugene Justin Pangwi
+
+    /**
+     * Converts a mixed fraction to an improper fraction. <br>
+     * ex. 3 1/2 convert to 7/2
+     */
+    public MixedFraction toFraction(MixedFraction p) {
+        int mFractionNum = p.getWholePart() * p.getDenominator() + p.getNumerator();
+        p.setNumerator(mFractionNum);
+        p.setDenominator(p.getDenominator());
+        p.setWholePart(0);
+        return p;
     }
 
     /**
@@ -71,23 +98,21 @@ public class MixedFraction extends Fraction {
      * by Kurt Matthew C. Nudo <br><br>
      * <p>
      * METHOD ALGORITHM: <br>
-     * Create a new Fraction object to hold the resulting MixedFraction <br>
-     * If both denominators are equal, <br>
-     * Set denominator equal to the denominator of the first fraction
-     * Add numerators of the current object instance and the passed Fraction parameter
-     * Else
-     * Compute the LCM of the denominators
-     * Set denominator to the LCM
-     * Compute for the sum of the MixedFraction instance and the passed
-     * Fraction parameter
-     * 3. Set numerator of the resulting MixedFraction object
-     * 4. Set denominator of the resulting MixedFraction object
-     * 5. Return the resulting Fraction
+     * 1. Create a new Fraction object to hold the resulting MixedFraction <br>
+     * 2. If both denominators are equal, <br>
+     * Set denominator equal to the denominator of the first fraction then <br>
+     * Add numerators of the current object instance and the passed Fraction parameter <br>
+     * Else, compute the LCM of the denominators, <br>
+     * Set denominator to the LCM,<br>
+     * And Compute for the sum of the MixedFraction instance and the passed
+     * Fraction parameter <br>
+     * 3. Set numerator of the resulting MixedFraction object <br>
+     * 4. Set denominator of the resulting MixedFraction object <br>
+     * 5. Return the resulting Fraction <br><br>
      *
      * @param param receives the passed Fraction instance.
      * @return the sum of a MixedFraction object and a Fraction object
      */
-
     public MixedFraction add(Fraction param) {
         var sum = new MixedFraction();
         int den, num;
@@ -102,33 +127,31 @@ public class MixedFraction extends Fraction {
         sum.setNumerator(num);
         sum.setDenominator(den);
         sum.reduce();
-
         return sum;
     }
 
     /**
-     * METHOD NAME: add ()
-     * WRITTEN BY: Kurt Matthew C. Nudo
-     * METHOD DESCRIPTION: Returns the sum of two MixedFraction objects
-     * PARAMETERS:
-     * 1. Fraction param - Receive the passed MixedFraction
-     * instance.
-     * METHOD ALGORITHM:
-     * 1. Create a new Fraction object to hold the resulting MixedFraction
+     * Adds two Mixed Fractions and overwrites the add method of Fraction. <br>
+     * by Kurt Matthew C. Nudo <br><br>
+     *
+     * METHOD ALGORITHM: <br>
+     * 1. Create a new Fraction object to hold the resulting MixedFraction <br>
      * 2. If both denominators are equal,
-     * Set denominator equal to the denominator of the first fraction
-     * Add numerators of the current object instance and the passed Fraction parameter
-     * Else
-     * Compute the LCM of the denominators
-     * Set denominator to the LCM
+     * Set denominator equal to the denominator of the first fraction then <br>
+     * Add numerators of the current object instance and the passed Fraction parameter <br>
+     * Else, Compute the LCM of the denominators, <br>
+     * Set denominator to the LCM <br>
      * Compute for the sum of the MixedFraction instance and the passed
-     * Fraction parameter
+     * Fraction parameter <br>
      * 3. Set the whole number of the resulting MixedFraction instance
-     * equal to the sum of the passed MixedFraction paramater's wholeNumber
-     * and this MixedFraction object's wholeNumber
-     * 4. Set numerator of the resulting MixedFraction object
-     * 5. Set denominator of the resulting MixedFraction object
-     * 6. Return the resulting Fraction
+     * equal to the sum of the passed MixedFraction parameter's wholeNumber
+     * and this MixedFraction object's wholeNumber <br>
+     * 4. Set numerator of the resulting MixedFraction object <br>
+     * 5. Set denominator of the resulting MixedFraction object <br>
+     * 6. Return the resulting Fraction <br><br>
+     *
+     * @param param receives the passed MixedFraction instance.
+     * @return the sum of two MixedFraction objects
      */
     public MixedFraction add(MixedFraction param) {
         var sum = new MixedFraction();
@@ -143,13 +166,19 @@ public class MixedFraction extends Fraction {
                     + den / param.getDenominator() * param.getNumerator();
         }
 
-        sum.setWholeNumber(this.getWholeNumber() + param.getWholeNumber());
+        sum.setWholePart(this.getWholePart() + param.getWholePart());
         sum.setNumerator(num);
         sum.setDenominator(den);
         sum.reduce();
         return sum;
     }
 
+    // overwrite subtract method
+
+    /**
+     * Overload subtract method <br>
+     * by Enrico Castro
+     */
     public MixedFraction subtract(MixedFraction param) {
         var diff = new MixedFraction();
         int den, num;
@@ -163,13 +192,16 @@ public class MixedFraction extends Fraction {
                     - den / param.getDenominator() * param.getNumerator();
         }
 
-        diff.setWholeNumber(this.getWholeNumber() - param.getWholeNumber());
+        diff.setWholePart(this.getWholePart() - param.getWholePart());
         diff.setNumerator(num);
         diff.setDenominator(den);
         diff.reduce();
         return diff;
     }
 
+    // overwrite multiplyBy method by Jerome
+
+    // overload multiplyBy method by Jerome
     /*public MixedFraction multiplyBy(MixedFraction param) {
         var product = new MixedFraction();
         int num, den, wN;
@@ -179,25 +211,14 @@ public class MixedFraction extends Fraction {
 
     }*/
 
-    /**
-     * Returns the equivalent value of the fraction in double format
-     */
-    public double toDouble() {
-        return this.getWholeNumber() + ((double) this.getNumerator() / this.getDenominator());
-    }
-
-    /**
-     *
-     */
+    // overwrite divideBy method by Andre
     //public MixedFraction divideBy(Fraction param) {
     // temporary notes for me, please ignore thanks
     // override
 
     //}
 
-    /**
-     *
-     */
+    // overload divideBy method by Andre
     //public MixedFraction divideBy(MixedFraction param) {
     // temporary notes for me, please ignore thanks
     // overload
@@ -205,7 +226,7 @@ public class MixedFraction extends Fraction {
     //}
 
     /**
-     *
+     * Override toString method by Andre
      */
     public String toString() {
         // temporary notes for me, please ignore thanks
@@ -224,17 +245,10 @@ public class MixedFraction extends Fraction {
     }
 
     /**
-     * Converts a mixed fraction to an improper fraction.
-     * ex. 3 1/2 convert to 7/2
+     * Returns the equivalent value of the fraction in double format <br>
+     * by Kurt Nudo
      */
-    public MixedFraction toFraction(MixedFraction p) {
-
-        int mFractionNum = p.getWholeNumber() * p.getDenominator() + p.getNumerator();
-        p.setNumerator(mFractionNum);
-        p.setDenominator(p.getDenominator());
-        p.setWholeNumber(0);
-
-        return p;
-
+    public double toDouble() {
+        return this.getWholePart() + ((double) this.getNumerator() / this.getDenominator());
     }
 }

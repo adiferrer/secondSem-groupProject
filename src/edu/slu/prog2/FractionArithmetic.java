@@ -3,16 +3,21 @@ package edu.slu.prog2;
 import java.util.Scanner;
 
 /**
- * The FractionArithmetic Class: demonstration for the Fraction and MixedFraction classes
+ * The FractionArithmetic Class is a demonstration for the Fraction and MixedFraction classes.
+ *
+ * @author Enrico Castro
+ * @author Jeanne Ferrer
+ * @author Kurt Nudo
+ * @version 2.0
  */
 public class FractionArithmetic {
     private static Scanner keyboard = new Scanner(System.in);
 
     /**
      * Demonstrates the usage of the Fraction and MixedFraction classes. <br>
+     * by Jeanne Ferrer
      *
      * @param args command-line parameter
-     * @author Jeanne Adeline S. Ferrer
      */
     public static void main(String[] args) {
         Fraction operand1, operand2, result;
@@ -64,10 +69,10 @@ public class FractionArithmetic {
                     System.out.println("Fraction 1: " + operand1);
                     operand2 = enterFraction("fraction 2 ");
                     System.out.println("Fraction 2: " + operand2);
-                    result = operand1.multiplyBy(operand2);
+                    /*result = operand1.multiplyBy(operand2);
                     System.out.print(operand1.toString() + " x " + operand2.toString() +
                             " = " + result.toString());
-                    System.out.println(" or " + result.toDouble());
+                    System.out.println(" or " + result.toDouble());*/
                     inputBuffer();
                     break;
                 case 4: // division operation
@@ -76,20 +81,20 @@ public class FractionArithmetic {
                     System.out.println("Fraction 1: " + operand1);
                     operand2 = enterFraction("fraction 2 ");
                     System.out.println("Fraction 2: " + operand2);
-                    result = operand1.divideBy(operand2);
+                    /*result = operand1.divideBy(operand2);
                     System.out.print(operand1.toString() + " / " + operand2.toString() +
                             " = " + result.toString());
-                    System.out.println(" or " + result.toDouble());
+                    System.out.println(" or " + result.toDouble());*/
                     inputBuffer();
                     break;
                 case 5: // reciprocal operation
                     System.out.println("\nGETTING THE RECIPROCAL");
                     operand1 = enterFraction("fraction ");
                     System.out.println("Fraction : " + operand1);
-                    result = operand1.reciprocal(operand1);
+                    /*result = operand1.reciprocal(operand1);
                     System.out.print(operand1.toString() + " = " +
                             result.toString());
-                    System.out.println(" or " + result.toDouble());
+                    System.out.println(" or " + result.toDouble());*/
                     inputBuffer();
                     break;
                 case 6: // fraction to decimal operation
@@ -127,32 +132,29 @@ public class FractionArithmetic {
         } while (choice != 9);
 
         System.out.println("\nTHANK YOU FOR USING THIS APPLICATION! :-)");
-    }
+    } // end of main method
 
     /**
-     * Displays an introductory message. <br><br>
-     *
+     * Displays an introductory message. <br>
+     * Enrico Nathanielle P. Castro <br><br>
+     * <p>
      * METHOD ALGORITHM: <br>
-     * 1. Display a message <br><br>
-     *
-     * @author Enrico Nathanielle P. Castro
+     * 1. Display a message
      */
     private static void showIntro() {
         System.out.println("This program performs mathematical operations on fractions.");
         System.out.println("See menu below.");
     }
 
-
     /**
-     * Displays the list of operations that the application could do. <br><br>
+     * Displays the list of operations that the application could do.<br>
+     * by Jeanne Adeline S. Ferrer <br><br>
      * <p>
      * METHOD ALGORITHM: <br>
-     * Display the menu of operations, which are: <br>
+     * 1. Display the menu of operations, which are: <br>
      * Add fractions, Subtract fractions, Multiply fractions, Divide fractions,<br>
      * Reciprocate a fraction,Convert a fraction to decimal, <br>
-     * Simplify a fraction, Compare fractions, Quit <br><br>
-     *
-     * @author Jeanne Adeline S. Ferrer
+     * Simplify a fraction, Compare fractions, Quit
      */
     private static void showMenu() {
         System.out.println("""
@@ -170,24 +172,38 @@ public class FractionArithmetic {
                 +------------------------------------------+""");
     }
 
-    private static Fraction enterFraction(String operand) {
-        Fraction fraction = null;
-        int wholeNumber, numerator = 0, denominator;
+    /**
+     * Initializes and declares a Mixed Fraction object based on the data acquired.
+     *
+     * @param operand determines whether it is the 1st or 2nd Mixed Fraction
+     * @return a Mixed Fraction
+     */
+    private static MixedFraction enterFraction(String operand) {
+        MixedFraction fraction = null;
+        int wholeNumber = 0, numerator = 0, denominator;
 
         try {
-            //wholeNumber = enterFractionData("whole number", operand);
+            wholeNumber = enterFractionData("whole part", operand);
             numerator = enterFractionData("numerator", operand);
             denominator = enterFractionData("denominator", operand);
-            fraction = new Fraction(numerator, denominator);
+            fraction = new MixedFraction(wholeNumber, numerator, denominator);
         } catch (NoNumeratorException noNumerator) {
-            fraction = new Fraction();
+            fraction = new MixedFraction();
         } catch (NoDenominatorException noDenominator) {
-            fraction = new Fraction(numerator);
+            fraction = new MixedFraction();
+            fraction.setNumerator(numerator);
         } finally {
             return fraction;
         }
     }
 
+    /**
+     * This method asks for the specific part of a Fraction.
+     *
+     * @param part specific part of the Fraction that is being asked of the user
+     * @param fractionInfo determines if it is the 1st or 2nd Fraction
+     * @return an integer for the respective part of the Fraction
+     */
     private static int enterFractionData(String part, String fractionInfo) {
         int input;
         try {
@@ -199,6 +215,8 @@ public class FractionArithmetic {
             }
             return input;
         } catch (Exception exc) {
+            if (part.equalsIgnoreCase("whole part"))
+                return 0;
             if (part.equalsIgnoreCase("numerator")) {
                 throw new NoNumeratorException();
             } else {
@@ -207,18 +225,13 @@ public class FractionArithmetic {
         }
     }
 
-    /*
-        METHOD NAME: inputBuffer
-        WRITTEN BY: Jeanne Adeline S. Ferrer
-
-        METHOD DESCRIPTION: Serves as a buffer between performed operation and the next
-                            choice of operation of the user
-        PARAMETERS:
-                    N/A
-        METHOD ALGORITHM:
-                    1. Display "Press enter to continue"
-                    2. Wait for user to press the enter button
-
+    /**
+     * Serves as a buffer between performed operation and the next choice of operation of the user. <br>
+     * by Jeanne Ferrer <br><br>
+     * <p>
+     * METHOD ALGORITHM:  <br>
+     * 1. Display "Press enter to continue"  <br>
+     * 2. Wait for user to press the enter button  <br>
      */
     private static void inputBuffer() {
         System.out.println();
@@ -227,4 +240,3 @@ public class FractionArithmetic {
         System.out.println();
     }
 }
-
