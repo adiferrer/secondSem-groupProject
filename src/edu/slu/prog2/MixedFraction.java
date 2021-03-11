@@ -58,7 +58,7 @@ public class MixedFraction extends Fraction {
     }*/
 
     /**
-     * Mutuator/Setter Method <br>
+     * Mutuator/Setter Method. <br>
      * by Eugene Justin Pangwi
      *
      * @param wholeNumber sets a number to the whole part of a Mixed Fraction
@@ -70,7 +70,7 @@ public class MixedFraction extends Fraction {
     // setFractionPart by Eugene Justin Pangwi
 
     /**
-     * Accessor/Getter Method <br>
+     * Accessor/Getter Method. <br>
      * by Eugene Justin Pangwi
      *
      * @return wholeNumber of a MixedFraction
@@ -180,7 +180,7 @@ public class MixedFraction extends Fraction {
     // overwrite subtract method
 
     /**
-     * Overload subtract method <br>
+     * Overloads subtract method. <br>
      * by Enrico Castro <br>
      *
      * @param param receives a Mixed Fraction to subtract
@@ -233,7 +233,7 @@ public class MixedFraction extends Fraction {
     //}
 
     /**
-     * Override toString method <br>
+     * Overrides toString method. <br>
      * by Andre
      */
     public String toString() {
@@ -253,10 +253,10 @@ public class MixedFraction extends Fraction {
     }
 
     /**
-     * Returns the equivalent value of the fraction in double format <br>
+     * Returns the equivalent value of the fraction in double format. <br>
      * by Kurt Nudo
      */
-    public double toDouble() {
+        public double toDouble() {
         return this.getWholePart() + ((double) this.getNumerator() / this.getDenominator());
     }
 }
