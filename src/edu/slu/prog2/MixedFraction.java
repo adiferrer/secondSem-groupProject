@@ -25,26 +25,31 @@ public class MixedFraction extends Fraction {
      * This becomes the default constructor (since it has no arguments) <br>
      * Example of usage: MixedFraction mFraction = new MixedFraction();
      */
-    MixedFraction() {
+    public MixedFraction() {
         super();
     }
 
     /**
      * This constructor creates a Mixed Fraction with a specified whole number as its initial value. <br>
      * by Jerome Bustarde <br>
-     * <p>
-     * <br>
-     * Example of usage: MixedFraction mFraction = new MixedFraction();
+     * Example of usage: MixedFraction mFraction = new MixedFraction(); <br>
+     *
+     * @param wholeNumber receives the whole number part for the Mixed Fraction
+     * @param fraction receives the Fraction part for the Mixed Fraction
      */
-    MixedFraction(int wholeNumber, Fraction fraction) {
+    public MixedFraction(int wholeNumber, Fraction fraction) {
         super(fraction.getNumerator(), fraction.getDenominator());
         this.wholeNumber = wholeNumber;
     }
 
     /**
      * by Jerome Bustarde
+     *
+     * @param wholeNumber receives the whole number for the Mixed Fraction
+     * @param num receives the numerator for the Mixed Fraction
+     * @param den receives the denominator for the Mixed Fraction
      */
-    MixedFraction(int wholeNumber, int num, int den) {
+    public MixedFraction(int wholeNumber, int num, int den) {
         this.wholeNumber = wholeNumber;
         super.setNumerator(num);
         super.setDenominator(den);
