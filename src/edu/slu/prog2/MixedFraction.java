@@ -61,7 +61,7 @@ public class MixedFraction extends Fraction {
      * Mutuator/Setter Method <br>
      * by Eugene Justin Pangwi
      *
-     * @param wholeNumber
+     * @param wholeNumber sets a number to the whole part of a Mixed Fraction
      */
     public void setWholePart(int wholeNumber) {
         this.wholeNumber = wholeNumber;
@@ -83,7 +83,11 @@ public class MixedFraction extends Fraction {
 
     /**
      * Converts a mixed fraction to an improper fraction. <br>
-     * ex. 3 1/2 convert to 7/2
+     * by Jomari Ocampo  <br>
+     * ex. 3 1/2 convert to 7/2 <br>
+     *
+     * @param p receives a Mixed Fraction
+     * @return an improper Fraction
      */
     public MixedFraction toFraction(MixedFraction p) {
         int mFractionNum = p.getWholePart() * p.getDenominator() + p.getNumerator();
@@ -177,7 +181,10 @@ public class MixedFraction extends Fraction {
 
     /**
      * Overload subtract method <br>
-     * by Enrico Castro
+     * by Enrico Castro <br>
+     *
+     * @param param receives a Mixed Fraction to subtract
+     * @return the difference of two Mixed Fractions
      */
     public MixedFraction subtract(MixedFraction param) {
         var diff = new MixedFraction();
@@ -226,7 +233,8 @@ public class MixedFraction extends Fraction {
     //}
 
     /**
-     * Override toString method by Andre
+     * Override toString method <br>
+     * by Andre
      */
     public String toString() {
         // temporary notes for me, please ignore thanks
