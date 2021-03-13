@@ -20,7 +20,7 @@ public class FractionArithmetic {
      * @param args command-line parameter
      */
     public static void main(String[] args) {
-        Fraction operand1, operand2, result;
+        MixedFraction operand1, operand2, result;
         byte choice = 0;
 
         showIntro();
@@ -32,7 +32,7 @@ public class FractionArithmetic {
                     System.out.print("Enter choice: ");
                     choice = Byte.parseByte(keyboard.nextLine());
                     if (choice < 1 || choice > 9)
-                        System.out.println("Please enter a number from 1-9.");
+                        System.out.println("Please enter a number from 1-10.");
                 } catch (NumberFormatException x) {
                     System.out.println("Not a valid input!");
                 }
@@ -69,10 +69,10 @@ public class FractionArithmetic {
                     System.out.println("Fraction 1: " + operand1);
                     operand2 = enterFraction("fraction 2 ");
                     System.out.println("Fraction 2: " + operand2);
-                    /*result = operand1.multiplyBy(operand2);
+                    result = operand1.multiplyBy(operand2);
                     System.out.print(operand1.toString() + " x " + operand2.toString() +
                             " = " + result.toString());
-                    System.out.println(" or " + result.toDouble());*/
+                    System.out.println(" or " + result.toDouble());
                     inputBuffer();
                     break;
                 case 4: // division operation
@@ -81,46 +81,47 @@ public class FractionArithmetic {
                     System.out.println("Fraction 1: " + operand1);
                     operand2 = enterFraction("fraction 2 ");
                     System.out.println("Fraction 2: " + operand2);
-                    /*result = operand1.divideBy(operand2);
+                    result = operand1.divideBy(operand2);
                     System.out.print(operand1.toString() + " / " + operand2.toString() +
                             " = " + result.toString());
-                    System.out.println(" or " + result.toDouble());*/
+                    System.out.println(" or " + result.toDouble());
                     inputBuffer();
                     break;
-                case 5: // reciprocal operation
-                    System.out.println("\nGETTING THE RECIPROCAL");
+                case 5: // reciprocate fractions
+                    System.out.println("\nRECIPROCATE MIXED FRACTION");
                     operand1 = enterFraction("fraction ");
                     System.out.println("Fraction : " + operand1);
-                    /*result = operand1.reciprocal(operand1);
-                    System.out.print(operand1.toString() + " = " +
-                            result.toString());
-                    System.out.println(" or " + result.toDouble());*/
+                    operand2 = operand1.reciprocal(operand1);
+                    operand2.setWholePart(operand1.getWholePart());
+                    System.out.print("Reciprocated : " + operand2.toString());
+                    System.out.println(" or "+ operand2.toDouble());
                     inputBuffer();
                     break;
-                case 6: // fraction to decimal operation
-                    System.out.println("\nFRACTION TO DECIMAL");
+                case 6: // mixed fraction to improper fraction
+                    System.out.println("\nFROM MIXED FRACTION TO IMPROPER FRACTION");
+                    operand1 = enterFraction("fraction ");
+                    System.out.println("Fraction : " + operand1);
+                    operand2 = operand1.toFraction();
+                    System.out.print("Improper Fraction : " +
+                            operand2.toString());
+                    System.out.println(" or " + operand2.toDouble());
+                    inputBuffer();
+                    break;
+                case 7: // fraction to decimal operation
+                    System.out.println("\nMIXED FRACTION TO DECIMAL");
                     operand1 = enterFraction("fraction ");
                     System.out.print("Fraction : " + operand1);
                     System.out.println(" or " + operand1.toDouble());
                     inputBuffer();
                     break;
-                case 7: // simplification operation
-                    System.out.println("\nSIMPLIFYING A FRACTION");
+                case 8: // simplification operation
+                    System.out.println("\nSIMPLIFYING A MIXED FRACTION");
                     operand1 = enterFraction("fraction ");
-                    operand2 = operand1;
                     System.out.println("Fraction : " + operand1);
-                    operand2.reduce();
-                    System.out.println(operand1.toString() + " = " +
-                            operand2.toString());
-                    inputBuffer();
-                    break;
-                case 8: // comparison operation
-                    System.out.println("\nCOMPARING TWO FRACTIONS");
-                    operand1 = enterFraction("fraction 1 ");
-                    System.out.println("Fraction 1: " + operand1);
-                    operand2 = enterFraction("fraction 2 ");
-                    System.out.println("Fraction 2: " + operand2);
-                    operand1.compareFraction(operand2);
+                    operand1.reduce();
+                    System.out.print("Simplified Fraction : " +
+                            operand1.toString());
+                    System.out.println(" or " + operand1.toDouble());
                     inputBuffer();
                     break;
             }
@@ -142,7 +143,7 @@ public class FractionArithmetic {
      * 1. Display a message
      */
     private static void showIntro() {
-        System.out.println("This program performs mathematical operations on fractions.");
+        System.out.println("This program performs mathematical operations on mixed fractions.");
         System.out.println("See menu below.");
     }
 
@@ -153,8 +154,8 @@ public class FractionArithmetic {
      * METHOD ALGORITHM: <br>
      * 1. Display the menu of operations, which are: <br>
      * Add fractions, Subtract fractions, Multiply fractions, Divide fractions,<br>
-     * Reciprocate a fraction,Convert a fraction to decimal, <br>
-     * Simplify a fraction, Compare fractions, Quit
+     * Reciprocate a fraction, Convert a mixed fraction to an improper fraction, <br>
+     * Convert a fraction to decimal, Simplify a fraction, Quit
      */
     private static void showMenu() {
         System.out.println("""
@@ -164,10 +165,11 @@ public class FractionArithmetic {
                 |       2. Subtract fractions              |
                 |       3. Multiply fractions              |
                 |       4. Divide fractions                |
-                |       5. Reciprocate a fraction          |
-                |       6. Convert a fraction to decimal   |
-                |       7. Simplify a fraction             |
-                |       8. Compare fractions               |
+                |       5. Reciprocate fraction            |
+                |       6. Convert a mixed fraction to     |
+                |          an improper fraction            |
+                |       7. Convert a fraction to decimal   |
+                |       8. Simplify a fraction             |
                 |       9. Quit                            |
                 +------------------------------------------+""");
     }
@@ -189,9 +191,10 @@ public class FractionArithmetic {
             fraction = new MixedFraction(wholeNumber, numerator, denominator);
         } catch (NoNumeratorException noNumerator) {
             fraction = new MixedFraction();
+            fraction.setWholePart(wholeNumber);
         } catch (NoDenominatorException noDenominator) {
             fraction = new MixedFraction();
-            fraction.setNumerator(numerator);
+            fraction.setWholePart(wholeNumber + numerator);
         } finally {
             return fraction;
         }

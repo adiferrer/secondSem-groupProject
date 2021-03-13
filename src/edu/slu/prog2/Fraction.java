@@ -254,7 +254,6 @@ public class Fraction {
      * @param param receives the passed Fraction instance.
      * @return the reciprocal of a Fraction object
      */
-
     public Fraction reciprocal(Fraction param) {
         var result = new Fraction();
         int temporaryDenominator = getDenominator();
@@ -298,11 +297,13 @@ public class Fraction {
      * Reduces the fraction to its simplest form.
      */
     public void reduce() {
-        int gcd = computeGCD(numerator, denominator); // determine the greatest common divisor of numerator and denominator
-        int newNumerator = numerator / gcd; //compute newNumerator, the numerator of the simplest form of this fraction
-        int newDenominator = denominator / gcd; //compute newDenominator, the denominator of the simplest form of this fraction
-        setNumerator(newNumerator); // set the value of the new numerator for this fraction
-        setDenominator(newDenominator); // set the value of the new denominator for this fraction
+        if (getNumerator() != 0) {
+            int gcd = computeGCD(numerator, denominator); // determine the greatest common divisor of numerator and denominator
+            int newNumerator = numerator / gcd; //compute newNumerator, the numerator of the simplest form of this fraction
+            int newDenominator = denominator / gcd; //compute newDenominator, the denominator of the simplest form of this fraction
+            setNumerator(newNumerator); // set the value of the new numerator for this fraction
+            setDenominator(newDenominator); // set the value of the new denominator for this fraction
+        }
     }
 
     /**
