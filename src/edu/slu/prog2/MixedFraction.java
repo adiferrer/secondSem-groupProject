@@ -60,6 +60,7 @@ public class MixedFraction extends Fraction {
      * Constructor that receives a given Fraction. <br>
      * Sets the numerator of a Mixed Fraction to a given numerator of a Fraction <br>
      * Sets the denominator of a Mixed Fraction to a given denominator of a Fraction <br>
+     *
      * @param fraction receives a given Fraction
      */
     public MixedFraction(Fraction fraction) {
@@ -80,6 +81,7 @@ public class MixedFraction extends Fraction {
     /**
      * Mutuator/Setter Method. <br>
      * by Eugene Justin Pangwi <br>
+     *
      * @param fraction receives a given Fraction
      */
     public void setFractionPart(Fraction fraction) {
@@ -105,6 +107,7 @@ public class MixedFraction extends Fraction {
      * 1. It uses getNumerator and getDenominator through a constructed object
      * of mixed fraction to get both the numerator and denominator of
      * Mixed Fraction. <br>
+     *
      * @return a fraction object
      */
     public Fraction getFractionPart() {
@@ -213,7 +216,7 @@ public class MixedFraction extends Fraction {
     /**
      * Computes for the difference of two Fractions and overrides subtract method. <br>
      * by Enrico Castro <br><br>
-     *
+     * <p>
      * METHOD ALGORITHM: <br>
      * 1. Create new object to hold the resulting Mixed Fraction <br>
      * 2. If both denominators are equal, set denominator then
@@ -247,7 +250,7 @@ public class MixedFraction extends Fraction {
     /**
      * Computes for the difference of two Fractions and overloads subtract method. <br>
      * by Enrico Castro <br><br>
-     *
+     * <p>
      * METHOD ALGORITHM: <br>
      * 1. Create new object to hold the resulting Mixed Fraction <br>
      * 2. If both denominators are equal, set denominator then
@@ -431,12 +434,12 @@ public class MixedFraction extends Fraction {
      * <p>
      * METHOD ALGORITHM: <br>
      * 1. If whole part of Mixed Fraction is equal to 0,
-     *      display the numerator over denominator only. <br>
+     * display the numerator over denominator only. <br>
      * 2. If denominator of Mixed Fraction is equal to 1,
-     *      add the whole part of Mixed Fraction to the numerator of Mixed Fraction,
-     *      then display the result. <br>
+     * add the whole part of Mixed Fraction to the numerator of Mixed Fraction,
+     * then display the result. <br>
      * 3. Else,
-     *      display the Mixed Fraction in the form of "wholePart numerator/denominator." <br><br>
+     * display the Mixed Fraction in the form of "wholePart numerator/denominator." <br><br>
      *
      * @return a string containing the mixed fraction
      */

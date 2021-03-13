@@ -94,7 +94,7 @@ public class FractionArithmetic {
                     operand2 = operand1.reciprocal(operand1);
                     operand2.setWholePart(operand1.getWholePart());
                     System.out.print("Reciprocated : " + operand2.toString());
-                    System.out.println(" or "+ operand2.toDouble());
+                    System.out.println(" or " + operand2.toDouble());
                     inputBuffer();
                     break;
                 case 6: // mixed fraction to improper fraction
@@ -203,7 +203,7 @@ public class FractionArithmetic {
     /**
      * This method asks for the specific part of a Fraction.
      *
-     * @param part specific part of the Fraction that is being asked of the user
+     * @param part         specific part of the Fraction that is being asked of the user
      * @param fractionInfo determines if it is the 1st or 2nd Fraction
      * @return an integer for the respective part of the Fraction
      */
