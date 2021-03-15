@@ -41,9 +41,9 @@ public class FractionArithmetic {
             switch (choice) {
                 case 1: // addition operation
                     System.out.println("\nADDING TWO FRACTIONS");
-                    operand1 = enterFraction("fraction 1 ");
+                    operand1 = enterMFraction("fraction 1 ");
                     System.out.println("Fraction 1: " + operand1);
-                    operand2 = enterFraction("fraction 2 ");
+                    operand2 = enterMFraction("fraction 2 ");
                     System.out.println("Fraction 2: " + operand2);
                     result = operand1.add(operand2);
                     System.out.print(operand1.toString() + " + " + operand2.toString() +
@@ -53,9 +53,9 @@ public class FractionArithmetic {
                     break;
                 case 2: // subtraction operation
                     System.out.println("\nSUBTRACTING TWO FRACTIONS");
-                    operand1 = enterFraction("fraction 1 ");
+                    operand1 = enterMFraction("fraction 1 ");
                     System.out.println("Fraction 1: " + operand1);
-                    operand2 = enterFraction("fraction 2 ");
+                    operand2 = enterMFraction("fraction 2 ");
                     System.out.println("Fraction 2: " + operand2);
                     result = operand1.subtract(operand2);
                     System.out.print(operand1.toString() + " - " + operand2.toString() +
@@ -65,9 +65,9 @@ public class FractionArithmetic {
                     break;
                 case 3: // multiplication operation
                     System.out.println("\nMULTIPLYING TWO FRACTIONS");
-                    operand1 = enterFraction("fraction 1 ");
+                    operand1 = enterMFraction("fraction 1 ");
                     System.out.println("Fraction 1: " + operand1);
-                    operand2 = enterFraction("fraction 2 ");
+                    operand2 = enterMFraction("fraction 2 ");
                     System.out.println("Fraction 2: " + operand2);
                     result = operand1.multiplyBy(operand2);
                     System.out.print(operand1.toString() + " x " + operand2.toString() +
@@ -77,9 +77,9 @@ public class FractionArithmetic {
                     break;
                 case 4: // division operation
                     System.out.println("\nDIVIDING TWO FRACTIONS");
-                    operand1 = enterFraction("fraction 1 ");
+                    operand1 = enterMFraction("fraction 1 ");
                     System.out.println("Fraction 1: " + operand1);
-                    operand2 = enterFraction("fraction 2 ");
+                    operand2 = enterMFraction("fraction 2 ");
                     System.out.println("Fraction 2: " + operand2);
                     result = operand1.divideBy(operand2);
                     System.out.print(operand1.toString() + " / " + operand2.toString() +
@@ -89,7 +89,7 @@ public class FractionArithmetic {
                     break;
                 case 5: // reciprocate fractions
                     System.out.println("\nRECIPROCATE MIXED FRACTION");
-                    operand1 = enterFraction("fraction ");
+                    operand1 = enterMFraction("fraction ");
                     System.out.println("Fraction : " + operand1);
                     operand2 = operand1.reciprocal(operand1);
                     operand2.setWholePart(operand1.getWholePart());
@@ -99,24 +99,24 @@ public class FractionArithmetic {
                     break;
                 case 6: // mixed fraction to improper fraction
                     System.out.println("\nFROM MIXED FRACTION TO IMPROPER FRACTION");
-                    operand1 = enterFraction("fraction ");
+                    operand1 = enterMFraction("fraction ");
                     System.out.println("Fraction : " + operand1);
-                    operand2 = operand1.toFraction();
+                    operand1.toFraction();
                     System.out.print("Improper Fraction : " +
-                            operand2.toString());
-                    System.out.println(" or " + operand2.toDouble());
+                            operand1.toString());
+                    System.out.println(" or " + operand1.toDouble());
                     inputBuffer();
                     break;
                 case 7: // fraction to decimal operation
                     System.out.println("\nMIXED FRACTION TO DECIMAL");
-                    operand1 = enterFraction("fraction ");
+                    operand1 = enterMFraction("fraction ");
                     System.out.print("Fraction : " + operand1);
                     System.out.println(" or " + operand1.toDouble());
                     inputBuffer();
                     break;
                 case 8: // simplification operation
                     System.out.println("\nSIMPLIFYING A MIXED FRACTION");
-                    operand1 = enterFraction("fraction ");
+                    operand1 = enterMFraction("fraction ");
                     System.out.println("Fraction : " + operand1);
                     operand1.reduce();
                     System.out.print("Simplified Fraction : " +
@@ -143,7 +143,7 @@ public class FractionArithmetic {
      * 1. Display a message
      */
     private static void showIntro() {
-        System.out.println("This program performs mathematical operations on mixed fractions.");
+        System.out.println("This program performs mathematical operations on mixedfractions.");
         System.out.println("See menu below.");
     }
 
@@ -180,7 +180,7 @@ public class FractionArithmetic {
      * @param operand determines whether it is the 1st or 2nd Mixed Fraction
      * @return a Mixed Fraction
      */
-    private static MixedFraction enterFraction(String operand) {
+    private static MixedFraction enterMFraction(String operand) {
         MixedFraction fraction = null;
         int wholeNumber = 0, numerator = 0, denominator;
 

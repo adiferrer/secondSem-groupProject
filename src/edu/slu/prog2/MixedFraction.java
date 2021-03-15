@@ -14,7 +14,7 @@ package edu.slu.prog2;
  */
 public class MixedFraction extends Fraction {
     // object field
-    private int wholeNumber; // holds the whole number of a mixed fraction
+    private int wholePart; // holds the whole number of a mixed fraction
 
     /**
      * Constructs a mixed fraction with numerator = 0 and denominator = 1. <br>
@@ -38,9 +38,9 @@ public class MixedFraction extends Fraction {
      * @param fraction    receives the Fraction part for the Mixed Fraction
      */
     public MixedFraction(int wholeNumber, Fraction fraction) {
-        fraction.setNumerator(fraction.getNumerator());
-        fraction.setDenominator(fraction.getDenominator());
-        this.wholeNumber = wholeNumber;
+        setNumerator(fraction.getNumerator());
+        setDenominator(fraction.getDenominator());
+        this.wholePart = wholeNumber;
     }
 
     /**
@@ -51,7 +51,7 @@ public class MixedFraction extends Fraction {
      * @param den         receives the denominator for the Mixed Fraction
      */
     public MixedFraction(int wholeNumber, int num, int den) {
-        this.wholeNumber = wholeNumber;
+        this.wholePart = wholeNumber;
         super.setNumerator(num);
         super.setDenominator(den);
     }
@@ -75,7 +75,7 @@ public class MixedFraction extends Fraction {
      * @param wholeNumber sets a number to the whole part of a Mixed Fraction
      */
     public void setWholePart(int wholeNumber) {
-        this.wholeNumber = wholeNumber;
+        this.wholePart = wholeNumber;
     }
 
     /**
@@ -98,7 +98,7 @@ public class MixedFraction extends Fraction {
      * @return wholeNumber of a MixedFraction
      */
     public int getWholePart() {
-        return wholeNumber;
+        return wholePart;
     }
 
     /**
@@ -120,17 +120,21 @@ public class MixedFraction extends Fraction {
     /**
      * Converts a mixed fraction to an improper fraction. <br>
      * by Jomari Ocampo  <br>
-     * ex. 3 1/2 convert to 7/2 <br>
-     *
-     * @return an improper Fraction
+     * ex. 3 1/2 converts to 7/2 <br>
      */
-    public MixedFraction toFraction() {
-        MixedFraction mFractionNum = null;
-        int n = getWholePart() * getDenominator() + getNumerator();
-        int d = getDenominator();
-        int w = 0;
-        mFractionNum = new MixedFraction(w, n, d);
-        return mFractionNum;
+    public void toFraction() {
+        setNumerator(getWholePart() * getDenominator() + getNumerator());
+        setDenominator(getDenominator());
+        setWholePart(0);
+    }
+
+    /**
+     * Converts an improper fraction to a mixed fraction. <br>
+     * ex. 5/3 converts to 1 2/3
+     */
+    public void toMixedFraction() {
+        setWholePart(getNumerator() / getDenominator());
+        setNumerator(getNumerator() % getDenominator());
     }
 
     /**
@@ -138,7 +142,8 @@ public class MixedFraction extends Fraction {
      * by Kurt Matthew C. Nudo <br><br>
      * <p>
      * METHOD ALGORITHM: <br>
-     * 1. Create a new Fraction object to hold the resulting MixedFraction <br>
+     * 1. Create a new MixedFraction object to hold this object's improper fraction form <br>
+     * 2. Create a new MixedFraction object to hold the sum <br>
      * 2. If both denominators are equal, <br>
      * Set denominator equal to the denominator of the first fraction then <br>
      * Add numerators of the current object instance and the passed Fraction parameter <br>
@@ -148,7 +153,9 @@ public class MixedFraction extends Fraction {
      * Fraction parameter <br>
      * 3. Set numerator of the resulting MixedFraction object <br>
      * 4. Set denominator of the resulting MixedFraction object <br>
-     * 5. Return the resulting Fraction <br><br>
+     * 5. Convert the sum to mixed fraction form <br>
+     * 7. Reduce the fraction to lowest terms <br>
+     * 8. Return the resulting Fraction <br><br>
      *
      * @param param receives the passed Fraction instance.
      * @return the sum of a MixedFraction object and a Fraction object
@@ -156,6 +163,7 @@ public class MixedFraction extends Fraction {
     public MixedFraction add(Fraction param) {
         var sum = new MixedFraction();
         int den, num;
+        toFraction();
         if (getDenominator() == param.getDenominator()) {
             den = getDenominator();
             num = getNumerator() + param.getDenominator();
@@ -164,9 +172,12 @@ public class MixedFraction extends Fraction {
             num = den / getDenominator() * getNumerator()
                     + den / param.getDenominator() * param.getDenominator();
         }
+        toMixedFraction();
         sum.setNumerator(num);
         sum.setDenominator(den);
         sum.reduce();
+        sum.toMixedFraction();
+
         return sum;
     }
 
@@ -175,20 +186,23 @@ public class MixedFraction extends Fraction {
      * by Kurt Matthew C. Nudo <br><br>
      * <p>
      * METHOD ALGORITHM: <br>
-     * 1. Create a new Fraction object to hold the resulting MixedFraction <br>
-     * 2. If both denominators are equal,
+     * 1. Create a new MixedFraction object to hold this object's improper fraction form <br>
+     * 2. Create a new MixedFraction object to hold the sum<br>
+     * 3. If both denominators are equal,
      * Set denominator equal to the denominator of the first fraction then <br>
      * Add numerators of the current object instance and the passed Fraction parameter <br>
      * Else, Compute the LCM of the denominators, <br>
      * Set denominator to the LCM <br>
      * Compute for the sum of the MixedFraction instance and the passed
      * Fraction parameter <br>
-     * 3. Set the whole number of the resulting MixedFraction instance
+     * 4. Set the whole number of the resulting MixedFraction instance
      * equal to the sum of the passed MixedFraction parameter's wholeNumber
      * and this MixedFraction object's wholeNumber <br>
-     * 4. Set numerator of the resulting MixedFraction object <br>
-     * 5. Set denominator of the resulting MixedFraction object <br>
-     * 6. Return the resulting Fraction <br><br>
+     * 5. Set numerator of the resulting MixedFraction object <br>
+     * 6. Set denominator of the resulting MixedFraction object <br>
+     * 7. Convert the sum into Mixed fraction form <br>
+     * 8. Reduce the sum object to the lowest terms <br>
+     * 7. Return the resulting MixedFraction <br><br>
      *
      * @param param receives the passed MixedFraction instance.
      * @return the sum of two MixedFraction objects
@@ -196,7 +210,8 @@ public class MixedFraction extends Fraction {
     public MixedFraction add(MixedFraction param) {
         var sum = new MixedFraction();
         int den, num;
-
+        toFraction();
+        param.toFraction();
         if (getDenominator() == param.getDenominator()) {
             den = getDenominator();
             num = getNumerator() + param.getNumerator();
@@ -205,11 +220,14 @@ public class MixedFraction extends Fraction {
             num = den / getDenominator() * getNumerator()
                     + den / param.getDenominator() * param.getNumerator();
         }
-
+        toMixedFraction();
+        param.toMixedFraction();
         sum.setWholePart(this.getWholePart() + param.getWholePart());
         sum.setNumerator(num);
         sum.setDenominator(den);
         sum.reduce();
+        sum.toMixedFraction();
+
         return sum;
     }
 
@@ -218,13 +236,10 @@ public class MixedFraction extends Fraction {
      * by Enrico Castro <br><br>
      * <p>
      * METHOD ALGORITHM: <br>
-     * 1. Create new object to hold the resulting Mixed Fraction <br>
-     * 2. If both denominators are equal, set denominator then
-     * subtract numerators of Mixed Fraction and other Fraction. <br>
-     * Else, compute the LCM of the denominators then set denominator to the LCM.
-     * Compute for the difference of both numerators of the Fractions. <br>
-     * 3. Set numerator and denominator of the resulting Mixed Fraction. <br>
-     * 4. Return the resulting Mixed Fraction. <br><br>
+     * 1. Convert this mixed fraction to an equivalent improper fraction <br>
+     * 2. Subtract the improper fraction to the other fraction <br>
+     * 3. Convert the result of step b to a mixed fraction form <br>
+     * 4. Return the result of step c <br><br>
      *
      * @param param other Fraction to subtract
      * @return the difference of this Mixed Fraction and another Fraction
@@ -232,6 +247,7 @@ public class MixedFraction extends Fraction {
     public MixedFraction subtract(Fraction param) {
         var subtract = new MixedFraction();
         int den, num;
+        toFraction();
         if (getDenominator() == param.getDenominator()) {
             den = getDenominator();
             num = getNumerator() + param.getDenominator();
@@ -240,9 +256,11 @@ public class MixedFraction extends Fraction {
             num = den / getDenominator() * getNumerator()
                     - den / param.getDenominator() * param.getDenominator();
         }
+        toMixedFraction();
         subtract.setNumerator(num);
         subtract.setDenominator(den);
         subtract.reduce();
+        subtract.toMixedFraction();
 
         return subtract;
     }
@@ -252,13 +270,11 @@ public class MixedFraction extends Fraction {
      * by Enrico Castro <br><br>
      * <p>
      * METHOD ALGORITHM: <br>
-     * 1. Create new object to hold the resulting Mixed Fraction <br>
-     * 2. If both denominators are equal, set denominator then
-     * subtract numerators of Mixed Fraction and other Mixed Fraction. <br>
-     * Else, compute the LCM of the denominators then set denominator to the LCM.
-     * Compute for the difference of both numerators of the Mixed Fractions. <br>
-     * 3. Set numerator and denominator of the resulting Mixed Fraction. <br>
-     * 4. Return the resulting Mixed Fraction. <br><br>
+     * 1. Convert this mixed fraction to an equivalent improper fraction(first) <br>
+     * 2. Convert the other mixed fraction to an equivalent improper fraction(second) <br>
+     * 3. Subtract the two resulting fractions from steps a and b <br>
+     * 4. Convert the result of step c to a mixed fraction form <br>
+     * 5. Return the result of step d <br><br>
      *
      * @param param receives a Mixed Fraction to subtract
      * @return the difference of two Mixed Fractions
@@ -266,7 +282,8 @@ public class MixedFraction extends Fraction {
     public MixedFraction subtract(MixedFraction param) {
         var subtract = new MixedFraction();
         int den, num;
-
+        toFraction();
+        param.toFraction();
         if (getDenominator() == param.getDenominator()) {
             den = getDenominator();
             num = getNumerator() - param.getNumerator();
@@ -275,11 +292,12 @@ public class MixedFraction extends Fraction {
             num = den / getDenominator() * getNumerator()
                     - den / param.getDenominator() * param.getNumerator();
         }
-
-        subtract.setWholePart(this.getWholePart() - param.getWholePart());
+        toMixedFraction();
         subtract.setNumerator(num);
         subtract.setDenominator(den);
         subtract.reduce();
+        subtract.toMixedFraction();
+
         return subtract;
     }
 
@@ -458,11 +476,11 @@ public class MixedFraction extends Fraction {
     }   // end of the toString method
 
     /**
-     * Returns the equivalent value of the fraction in double format. <br>
+     * @return the decimal value of this mixed number. <br>
      * by Kurt Nudo
      */
     public double toDouble() {
-        return this.getWholePart() + ((double) this.getNumerator() / this.getDenominator());
+        return (wholePart + 1.0 * getNumerator() / getDenominator());
     }
 
     /**
