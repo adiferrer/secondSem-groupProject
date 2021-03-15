@@ -311,7 +311,7 @@ public class MixedFraction extends Fraction {
     }
 
     /**
-     * Computes the product of two Mixed Fractions and overloads multiplyBy method <br>
+     * Computes the product of two Mixed Fractions and overloads multiplyBy method. <br>
      * by Jerome Bustarde <br><br>
      * <p>
      * METHOD ALGORITHM: <br>
