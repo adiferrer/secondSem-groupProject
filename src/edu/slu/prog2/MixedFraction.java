@@ -424,10 +424,11 @@ public class MixedFraction extends Fraction {
         var quotient = new MixedFraction();
 
         // numerators into improper
-        int num = (getWholePart() * getDenominator()) + getNumerator();
-        int otherNum = (param.getWholePart() * param.getDenominator()) + getNumerator();
+        toFraction();
+        int num = getNumerator();
+        param.toFraction();
+        int otherNum = param.getNumerator();
         int den;
-        int whole;
 
         // dividing the two fractions
         num = num * param.getDenominator();
@@ -435,12 +436,11 @@ public class MixedFraction extends Fraction {
 
         // into mixed fraction
         if (den != 0) {
-            whole = num / den;
-            num = num % den;
-            quotient.setNumerator(num);
             quotient.setDenominator(den);
-            quotient.setWholePart(whole);
+            quotient.setWholePart(0);
+            quotient.setNumerator(num);
             quotient.reduce();
+            quotient.toMixedFraction();
         }
 
         return quotient;
@@ -489,22 +489,19 @@ public class MixedFraction extends Fraction {
      * <p>
      * METHOD ALGORITHM: <br>
      * 1. Create a new Mixed Fraction object (result). <br>
-     * 2. Create an int variable to hold the old denominator
-     * of this object. <br>
-     * 3. Set the denominator of the result Mixed Fraction to the passed
-     * Mixed Fraction instance's numerator (param). <br>
+     * 2. Create a variable to hold the denominator. <br>
+     * 2. Set the denominator of the result Mixed Fraction to the current numerator. <br>
      * 4. Set the numerator of the result Mixed  Fraction equal to the temporary int
      * variable that holds the old denominator variable of this object. <br>
      * 5. Return the modified Mixed Fraction object (result). <br><br>
      *
-     * @param param receives the passed Mixed Fraction instance.
      * @return the reciprocal of a Mixed Fraction object
      */
-    public MixedFraction reciprocal(MixedFraction param) {
+    public MixedFraction reciprocal() {
         var result = new MixedFraction();
-        int temporaryDenominator = getDenominator();
-        result.setDenominator(param.getNumerator());
-        result.setNumerator(temporaryDenominator);
+        int tempD = getDenominator();
+        result.setDenominator(getNumerator());
+        result.setNumerator(tempD);
         return result;
     }
 }

@@ -91,7 +91,7 @@ public class FractionArithmetic {
                     System.out.println("\nRECIPROCATE MIXED FRACTION");
                     operand1 = enterMFraction("fraction ");
                     System.out.println("Fraction : " + operand1);
-                    operand2 = operand1.reciprocal(operand1);
+                    operand2 = operand1.reciprocal();
                     operand2.setWholePart(operand1.getWholePart());
                     System.out.print("Reciprocated : " + operand2.toString());
                     System.out.println(" or " + operand2.toDouble());
