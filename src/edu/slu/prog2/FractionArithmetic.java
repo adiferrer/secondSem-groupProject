@@ -218,9 +218,11 @@ public class FractionArithmetic {
             }
             return input;
         } catch (Exception exc) {
-            if (part.equalsIgnoreCase("whole part"))
+            if (part.equalsIgnoreCase("whole part")) {
+                System.out.println("\tWhole part automatically set to 0<");
                 return 0;
-            if (part.equalsIgnoreCase("numerator")) {
+            }
+            else if (part.equalsIgnoreCase("numerator")) {
                 throw new NoNumeratorException();
             } else {
                 throw new NoDenominatorException();
