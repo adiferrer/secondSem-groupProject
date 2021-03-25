@@ -8,7 +8,7 @@ import java.util.Scanner;
  * @author Enrico Castro
  * @author Jeanne Ferrer
  * @author Kurt Nudo
- * @version 2.0
+ * @version 3.0
  */
 public class FractionArithmetic {
     private static Scanner keyboard = new Scanner(System.in);
@@ -40,88 +40,121 @@ public class FractionArithmetic {
 
             switch (choice) {
                 case 1: // addition operation
-                    System.out.println("\nADDING TWO FRACTIONS");
-                    operand1 = enterMFraction("fraction 1 ");
-                    System.out.println("Fraction 1: " + operand1);
-                    operand2 = enterMFraction("fraction 2 ");
-                    System.out.println("Fraction 2: " + operand2);
-                    result = operand1.add(operand2);
-                    System.out.print(operand1.toString() + " + " + operand2.toString() +
-                            " = " + result.toString());
-                    System.out.println(" or " + result.toDouble());
+                    try {
+                        System.out.println("\nADDING TWO FRACTIONS");
+                        operand1 = enterMFraction("fraction 1 ");
+                        System.out.println("Fraction 1: " + operand1);
+                        operand2 = enterMFraction("fraction 2 ");
+                        System.out.println("Fraction 2: " + operand2);
+                        result = operand1.add(operand2);
+                        System.out.print(operand1.toString() + " + " + operand2.toString() +
+                                " = " + result.toString());
+                        System.out.println(" or " + result.toDouble());
+                    } catch (NullPointerException e) {
+                        System.out.println("Operation cannot continue due to null Fraction object.");
+                    }
                     inputBuffer();
                     break;
                 case 2: // subtraction operation
-                    System.out.println("\nSUBTRACTING TWO FRACTIONS");
-                    operand1 = enterMFraction("fraction 1 ");
-                    System.out.println("Fraction 1: " + operand1);
-                    operand2 = enterMFraction("fraction 2 ");
-                    System.out.println("Fraction 2: " + operand2);
-                    result = operand1.subtract(operand2);
-                    System.out.print(operand1.toString() + " - " + operand2.toString() +
-                            " = " + result.toString());
-                    System.out.println(" or " + result.toDouble());
+                    try {
+                        System.out.println("\nSUBTRACTING TWO FRACTIONS");
+                        operand1 = enterMFraction("fraction 1 ");
+                        System.out.println("Fraction 1: " + operand1);
+                        operand2 = enterMFraction("fraction 2 ");
+                        System.out.println("Fraction 2: " + operand2);
+                        result = operand1.subtract(operand2);
+                        System.out.print(operand1.toString() + " - " + operand2.toString() +
+                                " = " + result.toString());
+                        System.out.println(" or " + result.toDouble());
+                    } catch (NullPointerException e) {
+                        System.out.println("Operation cannot continue due to null Fraction object.");
+                    }
                     inputBuffer();
                     break;
                 case 3: // multiplication operation
-                    System.out.println("\nMULTIPLYING TWO FRACTIONS");
-                    operand1 = enterMFraction("fraction 1 ");
-                    System.out.println("Fraction 1: " + operand1);
-                    operand2 = enterMFraction("fraction 2 ");
-                    System.out.println("Fraction 2: " + operand2);
-                    result = operand1.multiplyBy(operand2);
-                    System.out.print(operand1.toString() + " x " + operand2.toString() +
-                            " = " + result.toString());
-                    System.out.println(" or " + result.toDouble());
+                    try {
+                        System.out.println("\nMULTIPLYING TWO FRACTIONS");
+                        operand1 = enterMFraction("fraction 1 ");
+                        System.out.println("Fraction 1: " + operand1);
+                        operand2 = enterMFraction("fraction 2 ");
+                        System.out.println("Fraction 2: " + operand2);
+                        result = operand1.multiplyBy(operand2);
+                        System.out.print(operand1.toString() + " x " + operand2.toString() +
+                                " = " + result.toString());
+                        System.out.println(" or " + result.toDouble());
+                    } catch (NullPointerException e) {
+                        System.out.println("Operation cannot continue due to null Fraction object.");
+                    }
                     inputBuffer();
                     break;
                 case 4: // division operation
-                    System.out.println("\nDIVIDING TWO FRACTIONS");
-                    operand1 = enterMFraction("fraction 1 ");
-                    System.out.println("Fraction 1: " + operand1);
-                    operand2 = enterMFraction("fraction 2 ");
-                    System.out.println("Fraction 2: " + operand2);
-                    result = operand1.divideBy(operand2);
-                    System.out.print(operand1.toString() + " / " + operand2.toString() +
-                            " = " + result.toString());
-                    System.out.println(" or " + result.toDouble());
+                    try {
+                        System.out.println("\nDIVIDING TWO FRACTIONS");
+                        operand1 = enterMFraction("fraction 1 ");
+                        System.out.println("Fraction 1: " + operand1);
+                        operand2 = enterMFraction("fraction 2 ");
+                        System.out.println("Fraction 2: " + operand2);
+                        result = operand1.divideBy(operand2);
+                        System.out.print(operand1.toString() + " / " + operand2.toString() +
+                                " = " + result.toString());
+                        System.out.println(" or " + result.toDouble());
+                    } catch (NullPointerException e) {
+                        System.out.println("Operation cannot continue due to null Fraction object.");
+                    }
                     inputBuffer();
                     break;
                 case 5: // reciprocate fractions
-                    System.out.println("\nRECIPROCATE MIXED FRACTION");
-                    operand1 = enterMFraction("fraction ");
-                    System.out.println("Fraction : " + operand1);
-                    operand2 = operand1.reciprocal();
-                    operand2.setWholePart(operand1.getWholePart());
-                    System.out.print("Reciprocated : " + operand2.toString());
-                    System.out.println(" or " + operand2.toDouble());
+                    try {
+
+                        System.out.println("\nRECIPROCATE MIXED FRACTION");
+                        operand1 = enterMFraction("fraction ");
+                        System.out.println("Fraction : " + operand1);
+                        operand2 = operand1.reciprocal();
+                        operand2.setWholePart(operand1.getWholePart());
+                        System.out.print("Reciprocated : " + operand2.toString());
+                        System.out.println(" or " + operand2.toDouble());
+                    } catch (NullPointerException e) {
+                        System.out.println("Operation cannot continue due to null Fraction object.");
+                    }
                     inputBuffer();
                     break;
                 case 6: // mixed fraction to improper fraction
-                    System.out.println("\nFROM MIXED FRACTION TO IMPROPER FRACTION");
-                    operand1 = enterMFraction("fraction ");
-                    System.out.println("Fraction : " + operand1);
-                    operand1.toFraction();
-                    System.out.print("Improper Fraction : " +
-                            operand1.toString());
-                    System.out.println(" or " + operand1.toDouble());
+                    try {
+                        System.out.println("\nFROM MIXED FRACTION TO IMPROPER FRACTION");
+                        operand1 = enterMFraction("fraction ");
+                        System.out.println("Fraction : " + operand1);
+                        operand1.toFraction();
+                        System.out.print("Improper Fraction : " +
+                                operand1.toString());
+                        System.out.println(" or " + operand1.toDouble());
+                    } catch (NullPointerException e) {
+                        System.out.println("Operation cannot continue due to null Fraction object.");
+                    }
                     inputBuffer();
                     break;
                 case 7: // fraction to decimal operation
-                    System.out.println("\nMIXED FRACTION TO DECIMAL");
-                    operand1 = enterMFraction("fraction ");
-                    System.out.print("Fraction : " + operand1);
-                    System.out.println(" or " + operand1.toDouble());
+                    try {
+                        System.out.println("\nMIXED FRACTION TO DECIMAL");
+                        operand1 = enterMFraction("fraction ");
+                        System.out.print("Fraction : " + operand1);
+                        System.out.println(" or " + operand1.toDouble());
+                    } catch (NullPointerException e) {
+                        System.out.println("Operation cannot continue due to null Fraction object.");
+                    }
                     inputBuffer();
                     break;
                 case 8: // simplification operation
-                    System.out.println("\nSIMPLIFYING A MIXED FRACTION");
-                    operand1 = enterMFraction("fraction ");
-                    System.out.println("Fraction : " + operand1);
-                    operand1.reduce();
-                    System.out.print("Simplified Fraction : " +
-                            operand1.toString());
-                    System.out.println(" or " + operand1.toDouble());
+                    try {
+                        System.out.println("\nSIMPLIFYING A MIXED FRACTION");
+                        operand1 = enterMFraction("fraction ");
+                        System.out.println("Fraction : " + operand1);
+                        operand1.reduce();
+                        System.out.print("Simplified Fraction : " +
+                                operand1.toString());
+                        System.out.println(" or " + operand1.toDouble());
+                    } catch (NullPointerException e) {
+                        System.out.println("Operation cannot continue due to null Fraction object.");
+                    }
                     inputBuffer();
                     break;
             }
@@ -189,6 +222,20 @@ public class FractionArithmetic {
             numerator = enterFractionData("numerator", operand);
             denominator = enterFractionData("denominator", operand);
             fraction = new MixedFraction(wholeNumber, numerator, denominator);
+        } catch (NoWholeNumberException noWholeNumber) { // if no whole number is entered
+            try {
+                numerator = enterFractionData("numerator", operand);
+                denominator = enterFractionData("denominator", operand);
+                fraction = new MixedFraction(0, numerator, denominator);
+            } catch (NoNumeratorException noNumerator) {
+                fraction = new MixedFraction();
+                fraction.setWholePart(wholeNumber);
+            } catch (NoDenominatorException noDenominator) {
+                fraction = new MixedFraction();
+                fraction.setWholePart(numerator);
+            } finally {
+                return fraction;
+            }
         } catch (NoNumeratorException noNumerator) {
             fraction = new MixedFraction();
             fraction.setWholePart(wholeNumber);
@@ -219,8 +266,7 @@ public class FractionArithmetic {
             return input;
         } catch (Exception exc) {
             if (part.equalsIgnoreCase("whole part")) {
-                System.out.println("\tWhole part automatically set to 0<");
-                return 0;
+                throw new NoWholeNumberException();
             }
             else if (part.equalsIgnoreCase("numerator")) {
                 throw new NoNumeratorException();
